@@ -1,8 +1,11 @@
 package com.example.victorantonio.lavendimia;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        HomeFragment.OnFragmentInteractionListener,VentasFragment.OnFragmentInteractionListener,ClientesFragment.OnFragmentInteractionListener, ArticulosFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +39,18 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        Fragment fragment=new HomeFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,fragment).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
+
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_la_vendimia",null,1);
+
     }
 
     @Override
@@ -80,22 +91,52 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment miFragment=null;
+        boolean fragmentSeleccionado=false;
+
+
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            miFragment=new HomeFragment();
+            fragmentSeleccionado=true;
         } else if (id == R.id.nav_gallery) {
-
+            miFragment=new VentasFragment();
+            fragmentSeleccionado=true;
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+            miFragment=new ClientesFragment();
+            fragmentSeleccionado=true;
         } else if (id == R.id.nav_share) {
-
+            miFragment=new ArticulosFragment();
+            fragmentSeleccionado=true;
         } else if (id == R.id.nav_send) {
-
+            miFragment=new SettingsFragment();
+            fragmentSeleccionado=true;
         }
+
+        if (fragmentSeleccionado==true){
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void goToRegistro(View v)
+    {
+        Intent miIntent=null;
+        switch (v.getId()){
+            case R.id.btnOpcionRegistro:
+                miIntent=new Intent(MainActivity.this,RegistroClientesActivity.class);
+                break;
+        }
+        if (miIntent!=null){
+            startActivity(miIntent);
+        }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
