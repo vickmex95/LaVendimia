@@ -13,4 +13,7 @@
     <string name="txt_clientes_fragment">Clientes</string>
     <string name="txt_articulos_fragment">Articulos</string>
     <string name="txt_settings_fragment">Configuracion</string>
+    <string name="title_activity_consultar_clientes">ConsultarClientesActivity</string>
+    <string name="title_activity_consultar_cliente">ConsultarClienteActivity</string>
+    <string name="title_activity_lista_personas_recycler">ListaPersonasRecycler</string>
 </resources>

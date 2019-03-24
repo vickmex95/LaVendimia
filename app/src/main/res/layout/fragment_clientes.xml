@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ClientesFragment"
+    tools:context="com.example.victorantonio.lavendimia.MainActivity"
     >
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,12 +16,23 @@
 
     <Button
         android:id="@+id/btnOpcionRegistro"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="48dp"
-        android:onClick="goToRegistro"
-        android:text="Registrar Cliente" />
+        android:text="Registrar Cliente"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/btnConsultaIndividual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Cliente"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/btnConsultaListaPersonasRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Lista Clientes"
+        android:onClick="onClick"/>
 
 </LinearLayout >

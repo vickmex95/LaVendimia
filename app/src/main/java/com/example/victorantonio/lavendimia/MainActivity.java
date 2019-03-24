@@ -1,11 +1,16 @@
 package com.example.victorantonio.lavendimia;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,10 +20,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.victorantonio.lavendimia.Adapters.ListaPersonasAdapter;
+import com.example.victorantonio.lavendimia.Models.Cliente;
+import com.example.victorantonio.lavendimia.Utils.Utils;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         HomeFragment.OnFragmentInteractionListener,VentasFragment.OnFragmentInteractionListener,ClientesFragment.OnFragmentInteractionListener, ArticulosFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener {
+
+    ListView listViewPersonas;
+    ArrayList<String> listaInformacion;
+    ArrayList<Cliente> listaClientes;
+    ConexionSQLiteHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +70,28 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "bd_la_vendimia",null,1);
+
+//        //consulta clientes fragment clientes:
+//        listViewPersonas=  findViewById(R.id.listViewPersonas);
+//
+//        consultarListaPersonas();
+//
+//        ArrayAdapter adaptador=new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion);
+//        listViewPersonas.setAdapter(adaptador);
+//        listViewPersonas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+//                String informacion="Clave: "+listaClientes.get(pos).getClave()+"\n";
+//                informacion+="Nombre: "+listaClientes.get(pos).getNombre()+"\n";
+//                informacion+="Apellido Paterno: "+listaClientes.get(pos).getApellido_pat()+"\n";
+//                informacion+="Apellido Materno: "+listaClientes.get(pos).getApellido_mat()+"\n";
+//                informacion+="RFC: "+listaClientes.get(pos).getRfc()+"\n";
+//
+//                Toast.makeText(getApplicationContext(),informacion,Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
+
 
     }
 
@@ -122,18 +164,57 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void goToRegistro(View v)
+    public void onClick(View v)
     {
         Intent miIntent=null;
         switch (v.getId()){
             case R.id.btnOpcionRegistro:
                 miIntent=new Intent(MainActivity.this,RegistroClientesActivity.class);
                 break;
+            case R.id.btnConsultaIndividual:
+                miIntent=new Intent(MainActivity.this,ConsultarClientesActivity.class);
+                break;
+            case R.id.btnConsultaListaPersonasRecycler:
+                miIntent=new Intent(MainActivity.this,ListaPersonasRecycler.class);
+                break;
         }
         if (miIntent!=null){
             startActivity(miIntent);
         }
     }
+
+//    private void consultarListaPersonas() {
+//        SQLiteDatabase db=conn.getReadableDatabase();
+//
+//        Cliente cliente=null;
+//        listaClientes=new ArrayList<Cliente>();
+//        //select * from usuarios
+//        Cursor cursor=db.rawQuery("SELECT * FROM "+Utils.TABLA_CLIENTE,null);
+//
+//        while (cursor.moveToNext()){
+//            cliente=new Cliente();
+//            cliente.setClave(cursor.getInt(0));
+//            cliente.setNombre(cursor.getString(1));
+//            cliente.setApellido_pat(cursor.getString(2));
+//            cliente.setApellido_mat(cursor.getString(3));
+//            cliente.setRfc(cursor.getString(4));
+//
+//            listaClientes.add(cliente);
+//        }
+//        obtenerLista();
+//    }
+//
+//    private void obtenerLista() {
+//        listaInformacion=new ArrayList<String>();
+//
+//        for (int i=0; i<listaClientes.size();i++){
+//            listaInformacion.add(listaClientes.get(i).getClave()+" - "
+//                    +listaClientes.get(i).getNombre());
+//        }
+//
+//    }
+
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {

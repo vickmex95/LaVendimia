@@ -19,8 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".RegistroClientesActivity" />
+        <activity
+            android:name=".ConsultarClientesActivity"
+            android:label="@string/title_activity_consultar_clientes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListaPersonasRecycler"
+            android:label="@string/title_activity_lista_personas_recycler"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

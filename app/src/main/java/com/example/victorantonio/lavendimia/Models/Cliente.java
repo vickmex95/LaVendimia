@@ -8,12 +8,22 @@ public class Cliente {
     private String apellido_mat;
     private String rfc;
 
+    private Cliente cliente;
+
     public Cliente(Integer clave, String nombre, String apellido_pat, String apellido_mat, String rfc) {
         this.clave = clave;
         this.nombre = nombre;
         this.apellido_pat = apellido_pat;
         this.apellido_mat = apellido_mat;
         this.rfc = rfc;
+    }
+
+    public Cliente(){
+
+    }
+
+    public Cliente(Cliente cliente){
+        this.cliente = cliente;
     }
 
     public Integer getClave() {

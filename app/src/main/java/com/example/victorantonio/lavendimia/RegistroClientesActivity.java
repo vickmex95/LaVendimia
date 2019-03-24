@@ -33,23 +33,22 @@ public class RegistroClientesActivity extends AppCompatActivity {
         //registrarUsuariosSql();
     }
 
-//    private void registrarUsuariosSql() {
-//        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
-//
-//        SQLiteDatabase db=conn.getWritableDatabase();
-//
-//        //insert into usuario (id,nombre,telefono) values (123,'Cristian','85665223')
-//
-//        String insert="INSERT INTO "+Utilidades.TABLA_USUARIO
-//                +" ( " +Utilidades.CAMPO_ID+","+Utilidades.CAMPO_NOMBRE+","+Utilidades.CAMPO_TELEFONO+")" +
-//                " VALUES ("+campoId.getText().toString()+", '"+campoNombre.getText().toString()+"','"
-//                +campoTelefono.getText().toString()+"')";
-//
-//        db.execSQL(insert);
-//
-//
-//        db.close();
-//    }
+    private void registrarUsuariosSql() {
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
+
+        SQLiteDatabase db=conn.getWritableDatabase();
+
+
+        String insert="INSERT INTO "+ Utils.TABLA_CLIENTE
+                +" ( " +Utils.clave_cliente+","+Utils.nombre_cliente+","+Utils.apellido_pat_cliente+","+Utils.apellido_mat_cliente+","+Utils.rfc_cliente+")" +
+                " VALUES ("+edt_clave.getText().toString()+", '"+edt_nombre.getText().toString()+"','"+edt_apellido_pat.getText().toString()+"','"
+                +edt_apellido_mat.getText().toString()+"','"+edt_rfc.getText().toString()+"')";
+
+        db.execSQL(insert);
+
+
+        db.close();
+    }
 
 
     private void registrarUsuarios() {
