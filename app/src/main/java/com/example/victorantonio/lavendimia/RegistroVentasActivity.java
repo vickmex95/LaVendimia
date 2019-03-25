@@ -1,6 +1,9 @@
 package com.example.victorantonio.lavendimia;
 
 import android.accounts.AccountManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,13 +13,25 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
+import com.example.victorantonio.lavendimia.Models.Articulo;
 import com.example.victorantonio.lavendimia.Models.Cliente;
+import com.example.victorantonio.lavendimia.Utils.Utils;
+
+import java.util.ArrayList;
 
 public class RegistroVentasActivity extends AppCompatActivity {
-    private static final String[] CLIENTES = new String[]{
-            "victor", "eduardo", "erik", "fer"
-    };
+//    private static final String[] CLIENTES = new String[]{
+//            "victor", "eduardo", "erik", "fer"
+//    };
+    AutoCompleteTextView CLIENTES;
+    ArrayList<String> listaClientes;
+    ArrayList<Cliente> clientesList;
 
+    AutoCompleteTextView ARTICULOS;
+    ArrayList<String> listaArticulos;
+    ArrayList<Articulo> articulosList;
+
+    ConexionSQLiteHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +40,83 @@ public class RegistroVentasActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        conn = new ConexionSQLiteHelper(getApplicationContext(), "bd_la_vendimia", null, 1);
 
         AutoCompleteTextView autocomplete_clientes = findViewById(R.id.autocomplete_clientes);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CLIENTES);
+        AutoCompleteTextView autocomplete_articulos = findViewById(R.id.autocomplete_articulos);
+
+        consultarListaClientes();
+        consultarListaArticulos();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaClientes);
         autocomplete_clientes.setAdapter(adapter);
 
-        AutoCompleteTextView autocomplete_articulos = findViewById(R.id.autocomplete_articulos);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, CLIENTES);
-        autocomplete_articulos.setAdapter(adapter);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaArticulos);
+        autocomplete_articulos.setAdapter(adapter2);
     }
 
     public void agregarAlCarro(View view){
 
+    }
+
+    private void consultarListaClientes(){
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Cliente cliente = null;
+        clientesList = new ArrayList<Cliente>();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utils.TABLA_CLIENTE, null);
+
+        while(cursor.moveToNext()){
+            cliente = new Cliente();
+            cliente.setClave(cursor.getInt(0));
+            cliente.setNombre(cursor.getString(1));
+            cliente.setApellido_pat(cursor.getString(2));
+            cliente.setApellido_mat(cursor.getString(3));
+            cliente.setRfc(cursor.getString(4));
+            clientesList.add(cliente);
+        }
+
+        obtenerListaClientes();
+
+    }
+
+    private void obtenerListaClientes(){
+        listaClientes = new ArrayList<String>();
+
+        for(int i = 0; i<clientesList.size(); i++){
+            listaClientes.add(clientesList.get(i).getNombre() + " " + clientesList.get(i).getApellido_pat() + " " + clientesList.get(i).getApellido_mat());
+        }
+    }
+
+    private void consultarListaArticulos(){
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Articulo articulo = null;
+        articulosList = new ArrayList<Articulo>();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utils.TABLA_ARTICULO, null);
+
+        while(cursor.moveToNext()){
+            articulo = new Articulo();
+            articulo.setClave(cursor.getInt(0));
+            articulo.setDescripcion(cursor.getString(1));
+            articulo.setModelo(cursor.getString(2));
+            articulo.setPrecio(cursor.getFloat(3));
+            articulo.setExistencia(cursor.getInt(4));
+            articulosList.add(articulo);
+        }
+
+        obtenerListaArticulos();
+
+    }
+
+    private void obtenerListaArticulos(){
+        listaArticulos = new ArrayList<String>();
+
+        for(int i = 0; i<articulosList.size(); i++){
+            listaArticulos.add(articulosList.get(i).getDescripcion());
+        }
     }
 
 }

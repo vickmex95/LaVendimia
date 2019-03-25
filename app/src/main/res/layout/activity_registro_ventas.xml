@@ -26,13 +26,35 @@
         android:textSize="20sp"
         android:text="Cliente: " />
 
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete_clientes"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingBottom="16dp"
-        android:popupTheme="@color/colorAccent"
-        />
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_clientes"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:popupTheme="@color/colorAccent"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            android:id="@+id/txt_rfc"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_marginRight="5dp"
+            android:text="RFC: " />
+        <TextView
+            android:id="@+id/txt_rfc_dato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="LOLV51: " />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txt_articulos"
@@ -41,21 +63,32 @@
         android:textSize="20sp"
         android:text="Articulo: " />
 
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete_articulos"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/ver_configuracion"
-        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:background="#3399FF"
-        android:onClick="agregarAlCarro"
-        android:text="Agregar"/>
+        android:orientation="horizontal"
+        android:paddingBottom="16dp"
+        >
 
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_articulos"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:popupTheme="@color/colorAccent"
+            android:layout_marginRight="20dp"
+            />
+
+        <Button
+            android:id="@+id/ver_configuracion"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#3399FF"
+            android:onClick="agregarAlCarro"
+            android:text="+"/>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
