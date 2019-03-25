@@ -30,4 +30,13 @@ public class Utils {
             " INTEGER PRIMARY KEY AUTOINCREMENT, "+nombre_articulo+" TEXT,"+modelo_articulo+" TEXT,"
             +precio_articulo+" FLOAT,"+existencia_articulo+" INTEGER)";
 
+    public static final String TABLA_CONFIGURACION = "configuraciones";
+    public static final String taza_financiamiento = "taza_financiamiento";
+    public static final String porcentaje_enganche = "porcentaje_enganche";
+    public static final String plazo_maximo = "plazo_maximo";
+
+    public static final String CREAR_TABLA_CONFIGURACION = "CREATE TABLE " +
+            TABLA_CONFIGURACION +" ("+taza_financiamiento +
+            " INTEGER, "+porcentaje_enganche+" INTEGER,"+plazo_maximo+" INTEGER)";
+
 }

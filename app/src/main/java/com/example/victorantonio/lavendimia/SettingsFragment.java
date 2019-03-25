@@ -19,6 +19,9 @@ public class SettingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private String fecha;
+    private String edt_financiamiento;
+    private String edt_enganche;
+    private String edt_plazo;
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,6 +54,10 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             fecha = getArguments().getString("fecha");
+
+            edt_financiamiento = getArguments().getString("financiamiento");
+            edt_enganche = getArguments().getString("enganche");
+            edt_plazo = getArguments().getString("plazo");
         }
     }
 

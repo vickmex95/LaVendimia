@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contenedor"
+    android:id="@+id/fragment_configuracion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.victorantonio.lavendimia.MainActivity">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/txt_settings_fragment" />
 
     <LinearLayout
@@ -33,4 +38,91 @@
 
     </LinearLayout>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/ver_configuracion"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="#3399FF"
+        android:onClick="consultaConfiguracion"
+        android:text="Ver Configuracion" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_financiamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasa Financiamiento:" />
+
+        <EditText
+            android:id="@+id/edt_financiamiento"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_enganche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% Enganche:" />
+
+        <EditText
+            android:id="@+id/edt_enganche"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="83dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_plazo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plazo Maximo:" />
+
+        <EditText
+            android:id="@+id/edt_plazo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="#3399FF"
+        android:onClick="guardarConfiguracion"
+        android:text="Guardar" />
+
+</LinearLayout>

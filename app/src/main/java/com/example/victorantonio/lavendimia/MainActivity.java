@@ -1,17 +1,13 @@
 package com.example.victorantonio.lavendimia;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,18 +17,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.victorantonio.lavendimia.Adapters.ListaPersonasAdapter;
 import com.example.victorantonio.lavendimia.Models.Cliente;
 import com.example.victorantonio.lavendimia.Utils.Utils;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -227,7 +218,98 @@ public class MainActivity extends AppCompatActivity
 //
 //    }
 
+    public void guardarConfiguracion(View v){
+        Boolean tiene_configuracion;
+        tiene_configuracion = verConfiguracionAnterior();
 
+        TextView edt_financiamiento = (TextView) findViewById(R.id.edt_financiamiento);
+        TextView edt_enganche = (TextView) findViewById(R.id.edt_enganche);
+        TextView edt_plazo = (TextView) findViewById(R.id.edt_plazo);
+
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_la_vendimia",null,1);
+        SQLiteDatabase db = conn.getWritableDatabase();
+
+        if(tiene_configuracion == false) {
+
+            ContentValues values = new ContentValues();
+            values.put(Utils.taza_financiamiento, edt_financiamiento.getText().toString());
+            values.put(Utils.porcentaje_enganche, edt_enganche.getText().toString());
+            values.put(Utils.plazo_maximo, edt_plazo.getText().toString());
+            String uno = "1";
+            Long idResultante = db.insert(Utils.TABLA_CONFIGURACION, uno, values);
+
+            Toast.makeText(getApplicationContext(), "Se guardo la configuracion!", Toast.LENGTH_SHORT).show();
+            db.close();
+        }else{
+            //String[] parametros={edt_clave.getText().toString()};
+            ContentValues values=new ContentValues();
+            values.put(Utils.taza_financiamiento,edt_financiamiento.getText().toString());
+            values.put(Utils.porcentaje_enganche,edt_enganche.getText().toString());
+            values.put(Utils.plazo_maximo,edt_plazo.getText().toString());
+
+            db.update(Utils.TABLA_CONFIGURACION,values,null,null);
+            Toast.makeText(getApplicationContext(),"Se actualizo la configuracion",Toast.LENGTH_LONG).show();
+            db.close();
+        }
+    }
+
+    public void consultaConfiguracion(View view){
+        String uno = "1";
+        ConexionSQLiteHelper conn;
+        conn=new ConexionSQLiteHelper(getApplicationContext(),"bd_la_vendimia",null,1);
+
+        TextView edt_financiamiento = (TextView) findViewById(R.id.edt_financiamiento);
+        TextView edt_enganche = (TextView) findViewById(R.id.edt_enganche);
+        TextView edt_plazo = (TextView) findViewById(R.id.edt_plazo);
+
+        SQLiteDatabase db= conn.getReadableDatabase();
+        String[] parametros={uno};
+        String[] campos={Utils.taza_financiamiento,Utils.porcentaje_enganche,Utils.plazo_maximo};
+
+
+        Cursor cursor =db.query(Utils.TABLA_CONFIGURACION,campos,null,null,null,null,null);
+        cursor.moveToFirst();
+        String taza_financiamiento = cursor.getString(0);
+        String porcentaje_enganche = cursor.getString(1);
+        String plazo = cursor.getString(2);
+        cursor.close();
+
+        Toast.makeText(getApplicationContext(),"Taza financiamiento: " + taza_financiamiento + "\n"
+                + "Porcentaje Enganche: "+porcentaje_enganche + "\n"
+                + "Plazo Maximo: " + plazo,Toast.LENGTH_SHORT).show();
+
+
+//        Bundle args = new Bundle();
+//        args.putString("financiamiento", taza_financiamiento);
+//        args.putString("enganche", porcentaje_enganche);
+//        args.putString("plazo", plazo);
+//        SettingsFragment settingsFragment = new SettingsFragment();
+//        settingsFragment.setArguments(args);
+    }
+
+    public boolean verConfiguracionAnterior(){
+        String uno = "1";
+        ConexionSQLiteHelper conn;
+        conn=new ConexionSQLiteHelper(getApplicationContext(),"bd_la_vendimia",null,1);
+
+        SQLiteDatabase db= conn.getReadableDatabase();
+        String[] parametros={uno};
+        String[] campos={Utils.taza_financiamiento,Utils.porcentaje_enganche,Utils.plazo_maximo};
+
+
+        Cursor cursor =db.query(Utils.TABLA_CONFIGURACION,campos,null,null,null,null,null);
+        cursor.moveToFirst();
+        String taza_financiamiento = cursor.getString(0);
+        String porcentaje_enganche = cursor.getString(1);
+        String plazo = cursor.getString(2);
+        cursor.close();
+        Boolean tiene_configuracion = false;
+        if(cursor != null){
+            tiene_configuracion = true;
+        }
+
+        return tiene_configuracion;
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
