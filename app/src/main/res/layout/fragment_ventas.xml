@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contenedor"
+    android:id="@+id/fragment_ventas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VentasFragment">
+    android:orientation="vertical"
+    tools:context="com.example.victorantonio.lavendimia.MainActivity"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/ventas_fragment" />
+        android:layout_height="wrap_content"
+        android:text="@string/txt_clientes_fragment" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,4 +35,19 @@
 
     </LinearLayout>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnRegistrarVenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Venta"
+        android:onClick="onClick"/>
+
+
+    <Button
+        android:id="@+id/btnConsultaListaVentas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Lista Ventas"
+        android:onClick="onClick"/>
+
+</LinearLayout >

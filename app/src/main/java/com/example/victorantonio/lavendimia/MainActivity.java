@@ -181,6 +181,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.btnConsultaListaArticulos:
                 miIntent=new Intent(MainActivity.this,ListaArticulosRecycler.class);
                 break;
+            case R.id.btnRegistrarVenta:
+                miIntent=new Intent(MainActivity.this,RegistroVentasActivity.class);
+                break;
         }
         if (miIntent!=null){
             startActivity(miIntent);

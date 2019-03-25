@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.victorantonio.lavendimia">
-
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,6 +39,10 @@
         <activity
             android:name=".ListaArticulosRecycler"
             android:label="@string/title_activity_lista_articulos_recycler"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegistroVentasActivity"
+            android:label="@string/title_activity_registro_ventas"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
