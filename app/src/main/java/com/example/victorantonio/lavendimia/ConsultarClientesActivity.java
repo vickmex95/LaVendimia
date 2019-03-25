@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.victorantonio.lavendimia.Utils.Utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class ConsultarClientesActivity extends AppCompatActivity {
@@ -37,6 +41,8 @@ public class ConsultarClientesActivity extends AppCompatActivity {
             cliente_id = (Integer) cliente_enviado.getSerializable("cliente_id");
             consultar(cliente_id);
         }
+
+
     }
 
     public void onClick(View view) {
