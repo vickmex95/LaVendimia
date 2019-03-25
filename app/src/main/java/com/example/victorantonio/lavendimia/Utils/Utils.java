@@ -45,7 +45,13 @@ public class Utils {
 
     public static final String CREAR_TABLA_ABONO_MENSUAL = "CREATE TABLE " +
             TABLA_ABONOS_MENSUAL +" ("+id_abono +
-            " INTEGER PRIMARY KEY AUTOINCREMENT, "+descripcion+" TEXT,"+")";
+            " INTEGER PRIMARY KEY AUTOINCREMENT, "+descripcion+" TEXT"+")";
+
+    //INGRESAR DATOS DE ABONOS MENSUAL
+    public static final String INSERTAR_ABONO1 = "INSERT INTO (id_abono,descripcion) values (1,3 ABONOS DE)";
+    public static final String INSERTAR_ABONO2 = "INSERT INTO (id_abono,descripcion) values (2,6 ABONOS DE)";
+    public static final String INSERTAR_ABONO3 = "INSERT INTO (id_abono,descripcion) values (3,9 ABONOS DE)";
+    public static final String INSERTAR_ABONO4 = "INSERT INTO (id_abono,descripcion) values (4,12 ABONOS DE)";
 
 
 
