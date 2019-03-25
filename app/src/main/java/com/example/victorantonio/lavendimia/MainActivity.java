@@ -302,13 +302,18 @@ public class MainActivity extends AppCompatActivity
 
         Cursor cursor =db.query(Utils.TABLA_CONFIGURACION,campos,null,null,null,null,null);
         cursor.moveToFirst();
-        String taza_financiamiento = cursor.getString(0);
-        String porcentaje_enganche = cursor.getString(1);
-        String plazo = cursor.getString(2);
-        cursor.close();
         Boolean tiene_configuracion = false;
         if(cursor != null){
-            tiene_configuracion = true;
+            if (cursor.getCount() > 0) {
+
+                String taza_financiamiento = cursor.getString(0);
+                String porcentaje_enganche = cursor.getString(1);
+                String plazo = cursor.getString(2);
+                tiene_configuracion = true;
+            }
+            cursor.close();
+
+
         }
 
         return tiene_configuracion;
