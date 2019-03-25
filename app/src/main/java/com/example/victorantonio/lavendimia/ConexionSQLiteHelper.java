@@ -18,6 +18,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(Utils.CREAR_TABLA_CLIENTE);
         db.execSQL(Utils.CREAR_TABLA_ARTICULO);
         db.execSQL(Utils.CREAR_TABLA_CONFIGURACION);
+        db.execSQL(Utils.CREAR_TABLA_ABONO_MENSUAL);
     }
 
     @Override
@@ -25,6 +26,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Utils.TABLA_CLIENTE);
         db.execSQL("DROP TABLE IF EXISTS " + Utils.TABLA_ARTICULO);
         db.execSQL("DROP TABLE IF EXISTS " + Utils.TABLA_CONFIGURACION);
+        db.execSQL("DROP TABLE IF EXISTS " + Utils.TABLA_ABONOS_MENSUAL);
         onCreate(db);
     }
 }

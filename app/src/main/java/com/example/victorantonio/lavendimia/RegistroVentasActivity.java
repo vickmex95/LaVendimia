@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import com.example.victorantonio.lavendimia.Models.Articulo;
 import com.example.victorantonio.lavendimia.Models.Cliente;
@@ -23,6 +25,10 @@ public class RegistroVentasActivity extends AppCompatActivity {
 //    private static final String[] CLIENTES = new String[]{
 //            "victor", "eduardo", "erik", "fer"
 //    };
+
+    ListView listViewArticulosSeleccionados;
+    ArrayList<String> listaInformacion;
+
     AutoCompleteTextView CLIENTES;
     ArrayList<String> listaClientes;
     ArrayList<Cliente> clientesList;
@@ -53,9 +59,22 @@ public class RegistroVentasActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaArticulos);
         autocomplete_articulos.setAdapter(adapter2);
+
+        listViewArticulosSeleccionados= (ListView) findViewById(R.id.listview_articulos_seleccionados);
+        ArrayAdapter adaptador3=new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaArticulos);
+        listViewArticulosSeleccionados.setAdapter(adaptador3);
     }
 
     public void agregarAlCarro(View view){
+        EditText clienteSeleccionado = (EditText) findViewById(R.id.autocomplete_clientes);
+        EditText articuloSeleccionado = (EditText) findViewById(R.id.autocomplete_articulos);
+
+
+
+    }
+
+    public void siguiente(View view){
+
 
     }
 

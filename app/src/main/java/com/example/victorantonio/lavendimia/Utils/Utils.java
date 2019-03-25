@@ -39,4 +39,14 @@ public class Utils {
             TABLA_CONFIGURACION +" ("+taza_financiamiento +
             " INTEGER, "+porcentaje_enganche+" INTEGER,"+plazo_maximo+" INTEGER)";
 
+    public static final String TABLA_ABONOS_MENSUAL = "abonos_mensuales";
+    public static final String id_abono = "id";
+    public static final String descripcion = "descripcion";
+
+    public static final String CREAR_TABLA_ABONO_MENSUAL = "CREATE TABLE " +
+            TABLA_ABONOS_MENSUAL +" ("+id_abono +
+            " INTEGER PRIMARY KEY AUTOINCREMENT, "+descripcion+" TEXT,"+")";
+
+
+
 }

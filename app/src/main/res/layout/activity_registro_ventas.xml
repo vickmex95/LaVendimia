@@ -90,5 +90,27 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txt_articulos_seleccionados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Articulos seleccionados: " />
+
+    <ListView
+        android:id="@+id/listview_articulos_seleccionados"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <Button
+        android:id="@+id/btn_siguiente"
+        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#3399FF"
+        android:onClick="siguiente"
+        android:text="Siguiente"/>
+
 
 </LinearLayout>
