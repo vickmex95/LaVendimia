@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_registro_usuarios"
+    android:id="@+id/activity_registro_articulos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,12 +9,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.victorantonio.lavendimia.RegistroClientesActivity">
+    tools:context="com.example.victorantonio.lavendimia.RegistroArticulosActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="REGISTRO DE CLIENTES"
+        android:text="REGISTRO DE ARTICULOS"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginBottom="30dp"/>
@@ -24,29 +24,29 @@
         android:id="@+id/edt_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="nombre"/>
+        android:hint="descripcion"/>
 
     <EditText
-        android:id="@+id/edt_apellido_pat"
+        android:id="@+id/edt_modelo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="apellido paterno"/>
+        android:hint="modelo"/>
     <EditText
-        android:id="@+id/edt_apellido_mat"
+        android:id="@+id/edt_precio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="apellido materno"/>
+        android:hint="precio"/>
     <EditText
-        android:id="@+id/edt_rfc"
+        android:id="@+id/edt_existencia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="rfc"/>
+        android:hint="existencia"/>
 
     <Button
         android:id="@+id/btnRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar Cliente"
+        android:text="Registrar Articulo"
         android:layout_marginTop="30dp"
         android:onClick="onClick"/>
 

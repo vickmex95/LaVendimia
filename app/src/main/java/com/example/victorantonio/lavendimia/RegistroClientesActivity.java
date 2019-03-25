@@ -13,14 +13,13 @@ import com.example.victorantonio.lavendimia.Utils.Utils;
 
 public class RegistroClientesActivity extends AppCompatActivity {
 
-    EditText edt_clave,edt_nombre,edt_apellido_pat, edt_apellido_mat, edt_rfc;
+    EditText edt_nombre,edt_apellido_pat, edt_apellido_mat, edt_rfc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_clientes);
 
-        edt_clave= (EditText) findViewById(R.id.edt_clave);
         edt_nombre= (EditText) findViewById(R.id.edt_nombre);
         edt_apellido_pat= (EditText) findViewById(R.id.edt_apellido_pat);
         edt_apellido_mat= (EditText) findViewById(R.id.edt_apellido_mat);
@@ -34,14 +33,14 @@ public class RegistroClientesActivity extends AppCompatActivity {
     }
 
     private void registrarUsuariosSql() {
-        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_la_vendimia",null,1);
 
         SQLiteDatabase db=conn.getWritableDatabase();
 
 
         String insert="INSERT INTO "+ Utils.TABLA_CLIENTE
-                +" ( " +Utils.clave_cliente+","+Utils.nombre_cliente+","+Utils.apellido_pat_cliente+","+Utils.apellido_mat_cliente+","+Utils.rfc_cliente+")" +
-                " VALUES ("+edt_clave.getText().toString()+", '"+edt_nombre.getText().toString()+"','"+edt_apellido_pat.getText().toString()+"','"
+                +" ( " +Utils.nombre_cliente+","+Utils.apellido_pat_cliente+","+Utils.apellido_mat_cliente+","+Utils.rfc_cliente+")" +
+                " VALUES ("+", '"+edt_nombre.getText().toString()+"','"+edt_apellido_pat.getText().toString()+"','"
                 +edt_apellido_mat.getText().toString()+"','"+edt_rfc.getText().toString()+"')";
 
         db.execSQL(insert);
@@ -57,7 +56,6 @@ public class RegistroClientesActivity extends AppCompatActivity {
         SQLiteDatabase db=conn.getWritableDatabase();
 
         ContentValues values=new ContentValues();
-        values.put(Utils.clave_cliente,edt_clave.getText().toString());
         values.put(Utils.nombre_cliente,edt_nombre.getText().toString());
         values.put(Utils.apellido_pat_cliente,edt_apellido_pat.getText().toString());
         values.put(Utils.apellido_mat_cliente,edt_apellido_mat.getText().toString());
@@ -65,7 +63,7 @@ public class RegistroClientesActivity extends AppCompatActivity {
 
         Long idResultante=db.insert(Utils.TABLA_CLIENTE,Utils.clave_cliente,values);
 
-        Toast.makeText(getApplicationContext(),"Id Registro: "+idResultante,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Se registro correctamente!" + "\n" + "Clave Registro: "+idResultante,Toast.LENGTH_SHORT).show();
         db.close();
     }
 }

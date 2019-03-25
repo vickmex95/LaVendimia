@@ -1,6 +1,8 @@
 package com.example.victorantonio.lavendimia.Models;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
 
     private Integer clave;
     private String nombre;

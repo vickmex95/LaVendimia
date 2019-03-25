@@ -27,6 +27,18 @@
         <activity
             android:name=".ListaPersonasRecycler"
             android:label="@string/title_activity_lista_personas_recycler"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegistroArticulosActivity"
+            android:label="@string/title_activity_registro_articulos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ConsultarArticulosActivity"
+            android:label="@string/title_activity_consultar_articulos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListaArticulosRecycler"
+            android:label="@string/title_activity_lista_articulos_recycler"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

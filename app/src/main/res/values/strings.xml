@@ -16,4 +16,7 @@
     <string name="title_activity_consultar_clientes">ConsultarClientesActivity</string>
     <string name="title_activity_consultar_cliente">ConsultarClienteActivity</string>
     <string name="title_activity_lista_personas_recycler">ListaPersonasRecycler</string>
+    <string name="title_activity_registro_articulos">RegistroArticulosActivity</string>
+    <string name="title_activity_consultar_articulos">ConsultarArticulosActivity</string>
+    <string name="title_activity_lista_articulos_recycler">ListaArticulosRecycler</string>
 </resources>

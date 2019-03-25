@@ -43,12 +43,15 @@ public class MainActivity extends AppCompatActivity
     ListView listViewPersonas;
     ArrayList<String> listaInformacion;
     ArrayList<Cliente> listaClientes;
-    ConexionSQLiteHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_la_vendimia",null,1);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -177,6 +180,15 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.btnConsultaListaPersonasRecycler:
                 miIntent=new Intent(MainActivity.this,ListaPersonasRecycler.class);
+                break;
+            case R.id.btnAgregarArticulo:
+                miIntent=new Intent(MainActivity.this,RegistroArticulosActivity.class);
+                break;
+            case R.id.btnConsultaArticulos:
+                miIntent=new Intent(MainActivity.this,ConsultarArticulosActivity.class);
+                break;
+            case R.id.btnConsultaListaArticulos:
+                miIntent=new Intent(MainActivity.this,ListaArticulosRecycler.class);
                 break;
         }
         if (miIntent!=null){

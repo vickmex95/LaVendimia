@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contenedor"
+    android:id="@+id/fragment_articulos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArticulosFragment">
+    android:orientation="vertical"
+    tools:context="com.example.victorantonio.lavendimia.MainActivity"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/txt_articulos_fragment" />
 
     <LinearLayout
@@ -33,4 +35,25 @@
 
     </LinearLayout>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnAgregarArticulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Articulo"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/btnConsultaArticulos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Articulo"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/btnConsultaListaArticulos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Lista Articulos"
+        android:onClick="onClick"/>
+
+</LinearLayout >
