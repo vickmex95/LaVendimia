@@ -26,6 +26,12 @@
         android:textSize="20sp"
         android:text="Cliente: " />
 
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete_clientes"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:popupTheme="@color/colorAccent"
+        android:layout_marginRight="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,13 +39,7 @@
         android:paddingBottom="16dp"
         >
 
-        <AutoCompleteTextView
-            android:id="@+id/autocomplete_clientes"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:popupTheme="@color/colorAccent"
-            android:layout_marginRight="10dp"
-            />
+
         <TextView
             android:id="@+id/txt_rfc"
             android:layout_width="30dp"
@@ -100,7 +100,7 @@
     <ListView
         android:id="@+id/listview_articulos_seleccionados"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="150dp"/>
 
     <Button
         android:id="@+id/btn_siguiente"

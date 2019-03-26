@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity
         bundle.putString("fecha", fecha.toString());
         HomeFragment homeFragment = new HomeFragment();
         homeFragment.setArguments(bundle);
+
+        insertarDatosCombobox();
 //        //consulta clientes fragment clientes:
 //        listViewPersonas=  findViewById(R.id.listViewPersonas);
 //
@@ -317,6 +319,23 @@ public class MainActivity extends AppCompatActivity
         }
 
         return tiene_configuracion;
+    }
+
+    public void insertarDatosCombobox(){
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_la_vendimia",null,1);
+
+        SQLiteDatabase db=conn.getWritableDatabase();
+
+        ContentValues values=new ContentValues();
+        values.put(Utils.descripcion_abonos,"3 ABONOS DE");
+        db.insert(Utils.TABLA_ABONOS_MENSUAL,Utils.id_abono,values);
+        values.put(Utils.descripcion_abonos,"6 ABONOS DE");
+        db.insert(Utils.TABLA_ABONOS_MENSUAL,Utils.id_abono,values);
+        values.put(Utils.descripcion_abonos,"9 ABONOS DE");
+        db.insert(Utils.TABLA_ABONOS_MENSUAL,Utils.id_abono,values);
+        values.put(Utils.descripcion_abonos,"12 ABONOS DE");
+        db.insert(Utils.TABLA_ABONOS_MENSUAL,Utils.id_abono,values);
+
     }
 
     @Override

@@ -20,4 +20,5 @@
     <string name="title_activity_consultar_articulos">ConsultarArticulosActivity</string>
     <string name="title_activity_lista_articulos_recycler">ListaArticulosRecycler</string>
     <string name="title_activity_registro_ventas">RegistroVentasActivity</string>
+    <string name="title_activity_tipo_abonos">TipoAbonosActivity</string>
 </resources>

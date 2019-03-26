@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.victorantonio.lavendimia">
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -43,6 +45,10 @@
         <activity
             android:name=".RegistroVentasActivity"
             android:label="@string/title_activity_registro_ventas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TipoAbonosActivity"
+            android:label="@string/title_activity_tipo_abonos"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

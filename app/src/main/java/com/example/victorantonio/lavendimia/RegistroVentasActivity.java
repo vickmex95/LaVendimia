@@ -1,6 +1,7 @@
 package com.example.victorantonio.lavendimia;
 
 import android.accounts.AccountManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -37,6 +38,8 @@ public class RegistroVentasActivity extends AppCompatActivity {
     ArrayList<String> listaArticulos;
     ArrayList<Articulo> articulosList;
 
+    ArrayList<String> listaArticulosSeleccionados;
+
     ConexionSQLiteHelper conn;
 
     @Override
@@ -53,6 +56,7 @@ public class RegistroVentasActivity extends AppCompatActivity {
 
         consultarListaClientes();
         consultarListaArticulos();
+        obtenerListaArticulosSeleccionados();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaClientes);
         autocomplete_clientes.setAdapter(adapter);
@@ -61,7 +65,7 @@ public class RegistroVentasActivity extends AppCompatActivity {
         autocomplete_articulos.setAdapter(adapter2);
 
         listViewArticulosSeleccionados= (ListView) findViewById(R.id.listview_articulos_seleccionados);
-        ArrayAdapter adaptador3=new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaArticulos);
+        ArrayAdapter adaptador3=new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaArticulosSeleccionados);
         listViewArticulosSeleccionados.setAdapter(adaptador3);
     }
 
@@ -74,7 +78,8 @@ public class RegistroVentasActivity extends AppCompatActivity {
     }
 
     public void siguiente(View view){
-
+        Intent intent = new Intent(RegistroVentasActivity.this,TipoAbonosActivity.class);
+        startActivity(intent);
 
     }
 
@@ -135,6 +140,21 @@ public class RegistroVentasActivity extends AppCompatActivity {
 
         for(int i = 0; i<articulosList.size(); i++){
             listaArticulos.add(articulosList.get(i).getDescripcion());
+        }
+    }
+
+
+    private void obtenerListaArticulosSeleccionados(){
+        listaArticulosSeleccionados = new ArrayList<String>();
+
+        for(int i = 0; i<articulosList.size(); i++){
+            listaArticulosSeleccionados.add(
+                    "Descripcion: " + articulosList.get(i).getDescripcion() + "\n" +
+                    "Modelo: "  + articulosList.get(i).getModelo() + "\n" +
+                    "Cantidad: " + "\n" +
+                    "Precio: " + "\n" +
+                    "Importe: "
+            );
         }
     }
 
